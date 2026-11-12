@@ -50,7 +50,7 @@ moy_age_by_intervals |>
   ggplot(mapping = aes(x = periode,y = mean)) + 
   geom_point () + 
   theme_bw() 
-ggsave('./output/figure2.png',width = 6, height=5)
+ggsave('./output/figure2.png',width = 12, height=5)
 
 ###############################################################################
 #                                 Étape 2                                     #
