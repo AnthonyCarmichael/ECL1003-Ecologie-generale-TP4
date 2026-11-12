@@ -62,9 +62,11 @@ ggsave('./output/figure2.png',width = 12, height=5)
   group_by(sexe_m_f) |>
   summarise(mean = mean(age), ecart_type = sd(age))
 
-ggplot(moy_age_by_gender, mapping = aes(x = sexe_m_f, y = mean)) + 
+ggplot(moy_age_by_gender, mapping = aes(x = sexe_m_f, y = mean)) +   
+  theme_bw() + 
   geom_col() + geom_errorbar(aes( ymin = mean - ecart_type,
-                                  ymax = mean + ecart_type), width = 0.2 )
+                                  ymax = mean + ecart_type), width = 0.2 ) 
+
 ggsave('./output/figure3.png',width = 6, height=5)
 
 # graph age en fonction langue
@@ -73,6 +75,7 @@ moy_age_by_langue <- don |>
   summarise(mean = mean(age), ecart_type = sd(age))
 
 ggplot(moy_age_by_langue, mapping = aes(x = langue, y = mean)) + 
+  theme_bw() + 
   geom_col() + geom_errorbar(aes( ymin = mean - ecart_type,
                                   ymax = mean + ecart_type), width = 0.2 )
 ggsave('./output/figure4.png',width = 6, height=5)
