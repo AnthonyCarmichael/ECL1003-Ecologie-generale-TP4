@@ -17,6 +17,10 @@ don <- read_excel("./data/Donnees_TP4_Cimetiere.xlsx")
 
 sum(is.na(don)) # Donne 0 donc aucune donnée NA
 
+# Value age négatif filtered
+don <- subset(don, don$age >= 0)
+
+
 ###############################################################################
 #                                 Étape 1                                     #
 # #############################################################################
@@ -26,7 +30,7 @@ graph1 <- don |> ggplot(mapping = aes(x = mort,y = age)) +
   geom_smooth(method = "lm", se=FALSE)+
   theme_bw()
 modele <- lm(age ~ mort, data = don)
-# p-value < 2.2e-16 on regette l'hypothèse nul avec une grande confiance
+# p-value < 2.2e-16 lien statistique
 summary(modele)
 ggsave('./output/figure1.png',graph1,width = 6, height=5)
 
